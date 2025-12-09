@@ -112,19 +112,19 @@ const PaymentsScreen = () => {
         <View style={styles.statsContainer}>
           <View style={[styles.statCard, styles.statCardPrimary]}>
             <Ionicons name="trending-up" size={32} color="#fff" />
-            <Text style={styles.statValue}>₺{stats?.total_expected.toFixed(2)}</Text>
+            <Text style={styles.statValue}>₺{stats?.total_expected?.toFixed(2) || '0.00'}</Text>
             <Text style={styles.statLabel}>Toplam Beklenen</Text>
           </View>
 
           <View style={[styles.statCard, styles.statCardSuccess]}>
             <Ionicons name="checkmark-circle" size={32} color="#fff" />
-            <Text style={styles.statValue}>₺{stats?.total_paid.toFixed(2)}</Text>
+            <Text style={styles.statValue}>₺{stats?.total_paid?.toFixed(2) || '0.00'}</Text>
             <Text style={styles.statLabel}>Tahsil Edilen</Text>
           </View>
 
           <View style={[styles.statCard, styles.statCardWarning]}>
             <Ionicons name="time" size={32} color="#fff" />
-            <Text style={styles.statValue}>₺{stats?.total_pending.toFixed(2)}</Text>
+            <Text style={styles.statValue}>₺{stats?.total_pending?.toFixed(2) || '0.00'}</Text>
             <Text style={styles.statLabel}>Bekleyen</Text>
           </View>
         </View>
@@ -140,7 +140,7 @@ const PaymentsScreen = () => {
               ]}
             />
           </View>
-          <Text style={styles.rateText}>{stats?.collection_rate.toFixed(1)}%</Text>
+          <Text style={styles.rateText}>{stats?.collection_rate?.toFixed(1) || '0.0'}%</Text>
         </View>
 
         {/* Tabs */}
@@ -194,7 +194,7 @@ const PaymentsScreen = () => {
                       {quotation.quotation_number}
                     </Text>
                     <Text style={styles.paymentAmount}>
-                      ₺{quotation.total.toFixed(2)}
+                      ₺{quotation.total?.toFixed(2) || '0.00'}
                     </Text>
                   </View>
                   <Text style={styles.customerName}>
@@ -237,7 +237,7 @@ const PaymentsScreen = () => {
                     {quotation.quotation_number}
                   </Text>
                   <Text style={[styles.paymentAmount, styles.paidAmount]}>
-                    ₺{quotation.payment_amount?.toFixed(2) || quotation.total.toFixed(2)}
+                    ₺{quotation.payment_amount?.toFixed(2) || quotation.total?.toFixed(2) || '0.00'}
                   </Text>
                 </View>
                 <Text style={styles.customerName}>
